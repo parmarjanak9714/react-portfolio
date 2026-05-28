@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Resume from '../assets/janak_Parmar_MERN_Stack_fresher.pdf';
 
 export default function Navbar() {
   return (
@@ -58,7 +57,7 @@ export default function Navbar() {
 
           <li>
             <a
-              href={Resume}
+              href='/Janak_Parmar_MERN_Stack_fresher.pdf'
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-600 transition duration-300"
