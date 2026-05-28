@@ -1,13 +1,14 @@
 
-import StarsBackground from "../Components/StarsBackground";
+// import StarsBackground from "../Components/StarsBackground";
 import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
-    <StarsBackground/>
+    {/* <StarsBackground/> */}
     
     
-    <div className="relative min-h-screen pt-20 bg-transparent text-white flex flex-col justify-center items-center text-center px-6">
+    <div 
+    className="min-h-screen pt-20 bg-black text-white flex flex-col justify-center items-center text-center px-6">
       
       <h1 className="text-5xl md:text-7xl font-bold mb-4">
         Hi, I'm <span className="text-cyan-400">Janak Parmar</span>
