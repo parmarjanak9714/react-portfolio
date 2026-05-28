@@ -1,43 +1,74 @@
-import React from "react";
-import { FaExternalLinkAlt,FaGithub } from "react-icons/fa";
+import ChatApp from '../assets/chat-app2.png';
+import PortFolio from '../assets/portfolio.png';
 
-// Change projects here: add new projects or remove existing ones by editing this PROJECT array
-const PROJECT =[
-    // Example: Remove this project by deleting this object
+export default function Projects() {
+  const projects = [
     {
-        title:"Food Ordering Website",
-        desc:"A modern single-page food ordering website with login,menu,and cart features built using HTML,CSS,JAVASCRIPT,AND JQUERY.",
-        Image:"/Projects/food-website.png",
-        Link:"#"
+      title: "Chat Application",
+      image: ChatApp,
+      description:
+        "Real-time chat application built using React, Node.js, Express.js and MongoDB. Users can chat instantly with a modern responsive interface.",
+      live: "https://chat-app-rho-eight-58.vercel.app/",
+      github: "https://github.com/parmarjanak9714/Chat-App",
     },
-    // Example: Keep this project or remove by deleting this object
     {
-        title:"Login& Signup page",
-        desc:"A modern and responsive login & signup page with background images, hover effects, and real website-like UI built using HTML, CSS, and JavaScript",
-        Image:"/Projects/insta_page.png",
-        Link:"#"
-
+      title: "Portfolio Website",
+      image: PortFolio,
+      description:
+        "Personal portfolio website built with React and Tailwind CSS showcasing my skills, projects and contact information.",
+      live: "https://react-portfolio-eta-nine-99.vercel.app/",
+      github: "https://github.com/parmarjanak9714/react-portfolio",
     },
-    // Add new projects here: copy the structure above and fill in title, desc, Image, Link
-];
+  ];
 
-export default function Projects(){
-    return(
-        <main className="min-h-[calc(100vh-64px)]py-16 bg-gray-50">
-            <div className="container max-auto px-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-8">MY PROJECTS</h2>
-                <div className="grid md:grid-cols-2 gap-8">{PROJECT.map(({title,desc,Image,Link})=>(
-                    <div key={title} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-                        <img src= {Image} alt={title} className="w-full h-64 object-cover"/>
-                        <div className="p-5">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-                            <p className="text-gray-600 mb-4">{desc}</p>
-                            <a href={Link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline font-medium">VIEW PROJECT</a>
-                        </div>
-                    </div>
-                ))}
-                </div>
+  return (
+    <div className="min-h-screen bg-black text-white pt-24 px-6">
+      <h1 className="text-4xl font-bold text-center mb-10">
+        My <span className="text-cyan-400">Projects</span>
+      </h1>
+
+      <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:scale-105 transition duration-300"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-40 object-cover rounded-lg mb-4"
+            />
+
+            <h2 className="text-2xl font-bold text-cyan-400 mb-4">
+              {project.title}
+            </h2>
+
+            <p className="text-gray-300 mb-6">
+              {project.description}
+            </p>
+
+            <div className="flex gap-4">
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-600"
+              >
+                Live Demo
+              </a>
+
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-cyan-500 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500 hover:text-white"
+              >
+                GitHub
+              </a>
             </div>
-        </main>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

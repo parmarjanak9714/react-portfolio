@@ -21,6 +21,14 @@ app.post("/send", async (req, res) => {
     return res.status(400).json({ success: false, message: "Missing fields" });
   }
 
+  // Check env vars before trying to send
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    return res.status(500).json({
+      success: false,
+      message: "Server config error: EMAIL_USER or EMAIL_PASS missing in .env",
+    });
+  }
+
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",

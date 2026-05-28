@@ -1,27 +1,46 @@
-import React from 'react'
-
 export default function About() {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-50 px-6'>
-        <div className='max-w-3xl bg-white shadow-lg rounded-2xl p-8'>
-            <h1 className='text-4xl font-bold text-blue-600 mb-6 text-center'>About</h1>
-            <p className='text-gray-700 text-lg eading-relaxed mb-4'>
-                Hi,My Name : <span className='font-semibold'>Parmar Janak Narendrabhai</span>  
-               I have Complated <span className='font-semibold'>
-                 10+12,BA(external),ITI-FITTER</span>
-            </p>
-            <p className='text-gray-700 text-lg leading-relaxed mb-4'>
-                I Have<span className='font-semibold'>
-                    2 Year Of Experience </span> At <span className='font-semibold'>Steel Cast Pvt.Ltd</span>
-                In The Maintenance Department
-                </p>
-            <p className='text-gray-700 text-lg leading-relaxed'>
-                My career objective is to continuously learn and grow as a professional,  
-          and to contribute my skills in<span className='font-semibold'>
-            MERN Stack Devlopment </span>And Tools Like,<span className='font-semibold'>Postman</span>
-            </p>
+    <div className="min-h-screen bg-black text-white pt-28 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+        
+        <h1 className="text-5xl font-bold mb-8">
+          About <span className="text-cyan-400">Me</span>
+        </h1>
+
+        <p className="text-lg text-gray-300 leading-8">
+          Hello! I'm <span className="text-cyan-400 font-semibold">Janak Parmar</span>,
+          a passionate MERN Stack Developer. I enjoy building modern,
+          responsive, and user-friendly web applications using technologies
+          like React, Node.js, Express.js, and MongoDB.
+        </p>
+
+        <p className="text-lg text-gray-300 leading-8 mt-6">
+          I have completed projects such as a Real-Time Chat Application
+          and a Personal Portfolio Website. I am continuously learning new
+          technologies and improving my problem-solving skills to become
+          a professional Full Stack Developer.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+          
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-3xl font-bold text-cyan-400">2+</h2>
+            <p className="text-gray-300 mt-2">Projects Completed</p>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-3xl font-bold text-cyan-400">MERN</h2>
+            <p className="text-gray-300 mt-2">Stack Developer</p>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-3xl font-bold text-cyan-400">100%</h2>
+            <p className="text-gray-300 mt-2">Learning Mindset</p>
+          </div>
+
         </div>
+
+      </div>
     </div>
   );
 }
-

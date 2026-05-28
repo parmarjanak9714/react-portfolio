@@ -1,80 +1,61 @@
-import { useState } from "react";
-
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [status, setStatus] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
-
-    try {
-      const res = await fetch("http://localhost:5000/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setStatus("✅ Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("❌ Failed to send message.");
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus("❌ Error: Could not send message.");
-    }
-  };
-
   return (
-    <div className="p-8 max-w-lg mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="border p-2 rounded"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="border p-2 rounded"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          className="border p-2 rounded"
-          rows="5"
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
-          Send
-        </button>
-      </form>
-      {status && <p className="mt-4">{status}</p>}
+    <div className="min-h-screen bg-black text-white pt-28 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+
+        <h1 className="text-5xl font-bold mb-12">
+          Contact <span className="text-cyan-400">Me</span>
+        </h1>
+
+        <p className="text-gray-300 text-lg mb-10">
+          Feel free to contact me for job opportunities, internships, or collaborations.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-cyan-400 mb-3">
+              Email
+            </h2>
+            <a
+              href="mailto:janakparmar9714@gmail.com"
+              className="text-gray-300 hover:text-cyan-400"
+            >
+              parmarjanak9714@gmail.com
+            </a>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-cyan-400 mb-3">
+              GitHub
+            </h2>
+            <a
+              href="https://github.com/parmarjanak9714"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-cyan-400"
+            >
+              github.com/your-github
+            </a>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-cyan-400 mb-3">
+              LinkedIn
+            </h2>
+            <a
+              href="https://www.linkedin.com/in/janak-parmar08111997"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-cyan-400"
+            >
+              linkedin.com/in/your-linkedin
+            </a>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   );
 }
