@@ -1,74 +1,159 @@
-import ChatApp from '../assets/chat-app2.png';
-import PortFolio from '../assets/portfolio.png';
+import { useState } from "react";
+import ChatApp from "../assets/whatshapp.png";
+import netflix from "../assets/netflix.png";
+import "../Pages/Projects.scss";
 
 export default function Projects() {
   const projects = [
     {
-      title: "Chat Application",
+      id: 1,
+      className: "box1",
+      title: "Real-Time WhatsApp Clone",
       image: ChatApp,
       description:
-        "Real-time chat application built using React, Node.js, Express.js and MongoDB. Users can chat instantly with a modern responsive interface.",
+        "A fully responsive, production-ready real-time communication platform built to emulate the core experience of WhatsApp. The application features a passwordless authentication flow utilizing dynamic OTP verifications and interactive phone onboarding. Engineered with a mobile-first architecture, it ensures seamless messaging interfaces, dark mode aesthetics, and immediate contact syncing across both desktop monitors and small mobile screens.",
       live: "https://chat-app-rho-eight-58.vercel.app/",
       github: "https://github.com/parmarjanak9714/Chat-App",
     },
     {
-      title: "Portfolio Website",
-      image: PortFolio,
+      id: 2,
+      className: "box2",
+      title: "Netflix Clone",
+      image: netflix,
       description:
-        "Personal portfolio website built with React and Tailwind CSS showcasing my skills, projects and contact information.",
-      live: "https://react-portfolio-eta-nine-99.vercel.app/",
-      github: "https://github.com/parmarjanak9714/react-portfolio",
+        "A high-performance, full-stack video streaming platform clone inspired by Netflix. This application replicates the real Netflix user experience, allowing users to browse trending content, filter movies by genre, view detailed descriptions, and watch movie trailers instantly. Built using the MERN stack, the application dynamically fetches and renders real-time data to provide a seamless entertainment experience across all devices.",
+      live: "https://netflix-mern-clone-two.vercel.app/",
+      github: "https://github.com/parmarjanak9714/netflix-mern-clone",
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white pt-24 px-6">
-      <h1 className="text-4xl font-bold text-center mb-10">
-        My <span className="text-cyan-400">Projects</span>
-      </h1>
-
-      <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:scale-105 transition duration-300"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-
-            <h2 className="text-2xl font-bold text-cyan-400 mb-4">
-              {project.title}
-            </h2>
-
-            <p className="text-gray-300 mb-6">
-              {project.description}
-            </p>
-
-            <div className="flex gap-4">
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-600"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-cyan-500 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500 hover:text-white"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        ))}
+    <section className="projects-section" id="projects">
+      <div className="projects-heading">
+        <h2>
+          My <span>Projects</span>
+        </h2>
       </div>
-    </div>
+
+      <div className="project-slider-box">
+        <div
+          className="slider"
+          style={{transform: `translateX(-${currentIndex * 100}%)`,}}
+        >
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className={`box ${project.className}`}
+            >
+              <div className="bg"></div>
+
+              <div className="details">
+                <div className="content">
+                  <h1>{project.title}</h1>
+
+                  <p>{project.description}</p>
+
+                  <div className="btn-group">
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <button className="live-btn">
+                        Live Demo
+                      </button>
+                    </a>
+
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <button className="github-btn">
+                        GitHub
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="illustration">
+                <div className="inner">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-image"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          className="arrow prev"
+          onClick={prevSlide}
+          aria-label="Previous"
+        >
+          <svg
+            width="56.898"
+            height="91"
+            viewBox="0 0 56.898 91"
+          >
+            <path
+              d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z"
+              transform="translate(0 91) rotate(-90)"
+              fill="#ffffff"
+            />
+          </svg>
+        </button>
+
+        <button
+          className="arrow next"
+          onClick={nextSlide}
+          aria-label="Next"
+        >
+          <svg
+            width="56.898"
+            height="91"
+            viewBox="0 0 56.898 91"
+          >
+            <path
+              d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z"
+              transform="translate(56.898) rotate(90)"
+              fill="#ffffff"
+            />
+          </svg>
+        </button>
+
+        <div className="trail">
+          {projects.map((item, index) => (
+            <div
+              key={item.id}
+              className={`trail-item ${
+                currentIndex === index ? "active" : ""
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            >
+              {String(index + 1).padStart(2, "0")}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
