@@ -1,5 +1,6 @@
 import ChatApp from '../assets/whatshapp.png';
 import Netflix from '../assets/netflix.png';
+import website from '../assets/food-website.png'
 const projects = [
     {
         id: 1,
@@ -59,6 +60,35 @@ const projects = [
             'Global App Filtering: Real-time content queries indexing titles, genres, and cast files.',
             'Personal Watchlists: Active profile collection nodes saved on secure MongoDB collections.'
 
+        ]
+    },
+    {
+        id: 3,
+        title:"food-website",
+        image:website,
+        shortDescription:"A responsive food ordering website built using HTML, CSS, JavaScript, and jQuery with login functionality, food search, cart management, and order history.",
+        description:
+        'Hang-Out Food Zone is a responsive food ordering web application developed using HTML, CSS, JavaScript, and jQuery. The application includes a modern glassmorphism login page, an interactive food menu, live search functionality, cart management, total price calculation, order placement, order history, delivery address validation, and responsive design for different screen sizes.',
+        github:'https://github.com/parmarjanak9714/food-website-fronted.',
+        live:'https://food-website-fronted.vercel.app/',
+        technologies:[
+            "HTML5",
+             "CSS3",
+            "JavaScript",
+            "jQuery",
+            "Font Awesome"
+        ],
+        features:[
+    "Responsive Design",
+    "Glassmorphism Login Page",
+    "Food Search Functionality",
+    "Add & Remove Food Items",
+    "Dynamic Cart Total",
+    "Order Placement",
+    "Delivery Address Validation",
+    "Order History",
+    "Interactive UI",
+    "Hover Effects"
         ]
     }
 ]
