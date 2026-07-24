@@ -47,7 +47,7 @@ export default function Navbar() {
 
           <li>
             <a
-              href="/Janak_Parmar_MERN_Stack_fresher.pdf"
+              href="/janak_MERN_Cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-600"

@@ -1,159 +1,42 @@
-import { useState } from "react";
-import ChatApp from "../assets/whatshapp.png";
-import netflix from "../assets/netflix.png";
-import "../Pages/Projects.scss";
+import React from 'react'
+import projects from '../Data/Project';
+import { useNavigate } from 'react-router-dom';
 
-export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      className: "box1",
-      title: "Real-Time WhatsApp Clone",
-      image: ChatApp,
-      description:
-        "A fully responsive, production-ready real-time communication platform built to emulate the core experience of WhatsApp. The application features a passwordless authentication flow utilizing dynamic OTP verifications and interactive phone onboarding. Engineered with a mobile-first architecture, it ensures seamless messaging interfaces, dark mode aesthetics, and immediate contact syncing across both desktop monitors and small mobile screens.",
-      live: "https://chat-app-rho-eight-58.vercel.app/",
-      github: "https://github.com/parmarjanak9714/Chat-App",
-    },
-    {
-      id: 2,
-      className: "box2",
-      title: "Netflix Clone",
-      image: netflix,
-      description:
-        "A high-performance, full-stack video streaming platform clone inspired by Netflix. This application replicates the real Netflix user experience, allowing users to browse trending content, filter movies by genre, view detailed descriptions, and watch movie trailers instantly. Built using the MERN stack, the application dynamically fetches and renders real-time data to provide a seamless entertainment experience across all devices.",
-      live: "https://netflix-mern-clone-two.vercel.app/",
-      github: "https://github.com/parmarjanak9714/netflix-mern-clone",
-    },
-  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
-  };
-
+const Projects = () => {
+  const navigate = useNavigate();
   return (
-    <section className="projects-section" id="projects">
-      <div className="projects-heading">
-        <h2>
-          My <span>Projects</span>
-        </h2>
-      </div>
-
-      <div className="project-slider-box">
-        <div
-          className="slider"
-          style={{transform: `translateX(-${currentIndex * 100}%)`,}}
-        >
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className={`box ${project.className}`}
-            >
-              <div className="bg"></div>
-
-              <div className="details">
-                <div className="content">
-                  <h1>{project.title}</h1>
-
-                  <p>{project.description}</p>
-
-                  <div className="btn-group">
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button className="live-btn">
-                        Live Demo
-                      </button>
-                    </a>
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button className="github-btn">
-                        GitHub
-                      </button>
-                    </a>
+    <section className='w-full py-16 px-4 bg-black text-white pt-28'>
+      <div className='max-w-7xl mx-auto text-center'>
+        <h1 className='text-5xl font-bold mb-12'>
+          My <span className='text-cyan-400'>Project</span>
+          </h1>
+          <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+            {projects.map((project)=>(
+              <div key={project.id} 
+              className='group max-w-sm mx-auto w-full overflow-hidden rounded-2xl border border-gray-700 bg-[#111827] shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl'>
+                <img src={project.image}
+                alt={project.title}
+                className='h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105'/>
+                <div className='p-5'>
+                <h3 className='text-xl font-bold text-white'>{project.title}</h3>
+                <p className='mt-3 text-sm text-gray-400 line-clamp-2'>{project.shortDescription}</p>
+                <button onClick={()=>navigate(`/project/${project.id}`)}
+                 className='mt-5 w-full rounded-lg bg-blue-600 py-2 text-white transition hover:bg-blue-700'>
+                      More Information
+                </button>
                   </div>
-                </div>
               </div>
+            ))}
 
-              <div className="illustration">
-                <div className="inner">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          </div>
 
-        <button
-          className="arrow prev"
-          onClick={prevSlide}
-          aria-label="Previous"
-        >
-          <svg
-            width="56.898"
-            height="91"
-            viewBox="0 0 56.898 91"
-          >
-            <path
-              d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z"
-              transform="translate(0 91) rotate(-90)"
-              fill="#ffffff"
-            />
-          </svg>
-        </button>
-
-        <button
-          className="arrow next"
-          onClick={nextSlide}
-          aria-label="Next"
-        >
-          <svg
-            width="56.898"
-            height="91"
-            viewBox="0 0 56.898 91"
-          >
-            <path
-              d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z"
-              transform="translate(56.898) rotate(90)"
-              fill="#ffffff"
-            />
-          </svg>
-        </button>
-
-        <div className="trail">
-          {projects.map((item, index) => (
-            <div
-              key={item.id}
-              className={`trail-item ${
-                currentIndex === index ? "active" : ""
-              }`}
-              onClick={() => setCurrentIndex(index)}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </div>
-          ))}
-        </div>
       </div>
+
+
     </section>
-  );
+
+  )
 }
+
+export default Projects
