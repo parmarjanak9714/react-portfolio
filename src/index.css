@@ -5,3 +5,39 @@
 body{
     font-family: 'Inter', sans-serif !important;
 }
+/* =========================
+   Theme Variables
+========================= */
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+}
+
+.dark {
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border-color: #1f2937;
+}
+
+/* Smooth theme transition */
+html,
+body,
+#root {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
