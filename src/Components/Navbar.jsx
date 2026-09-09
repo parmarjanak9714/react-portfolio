@@ -41,7 +41,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
           className={`rounded-2xl border backdrop-blur-xl shadow-lg transition-all duration-300 ${
             darkMode
               ? "border-white/10 bg-black/75 shadow-cyan-500/5"
-              : "border-gray-200 bg-white/80 shadow-gray-200/50"
+              : "border-gray-200 bg-white/95 shadow-gray-200/50"
           }`}
         >
           {/* Main Navbar */}
@@ -89,7 +89,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
                             ? "text-cyan-400"
                             : darkMode
                               ? "text-gray-300 hover:text-white"
-                              : "text-gray-600 hover:text-gray-900"
+                              : "text-gray-800 hover:text-cyan-600"
                         }`}
                       >
                         {item.name}
