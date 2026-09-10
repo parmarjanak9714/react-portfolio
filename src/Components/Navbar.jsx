@@ -12,11 +12,11 @@ import {
 } from "react-icons/fa";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Skills", path: "/skills" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Contact", id: "contact" },
 ];
 
 export default function Navbar({ darkMode, setDarkMode }) {
@@ -28,6 +28,18 @@ export default function Navbar({ darkMode, setDarkMode }) {
   };
 
   const closeMenu = () => setMenuOpen(false);
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    closeMenu();
+  };
 
   return (
     <motion.nav
@@ -76,39 +88,17 @@ export default function Navbar({ darkMode, setDarkMode }) {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
-                <NavLink
+                <button
                   key={item.name}
-                  to={item.path}
-                  className="relative px-4 py-2 rounded-lg text-sm font-medium"
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    darkMode
+                      ? "text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/10"
+                      : "text-gray-800 hover:text-cyan-600 hover:bg-cyan-50"
+                  }`}
                 >
-                  {({ isActive }) => (
-                    <>
-                      <span
-                        className={`relative z-10 transition-colors duration-300 ${
-                          isActive
-                            ? "text-cyan-400"
-                            : darkMode
-                              ? "text-gray-300 hover:text-white"
-                              : "text-gray-800 hover:text-cyan-600"
-                        }`}
-                      >
-                        {item.name}
-                      </span>
-
-                      {isActive && (
-                        <motion.span
-                          layoutId="activeNav"
-                          className="absolute inset-0 rounded-lg bg-cyan-400/10 border border-cyan-400/10"
-                          transition={{
-                            type: "spring",
-                            stiffness: 350,
-                            damping: 30,
-                          }}
-                        />
-                      )}
-                    </>
-                  )}
-                </NavLink>
+                  {item.name}
+                </button>
               ))}
             </div>
 

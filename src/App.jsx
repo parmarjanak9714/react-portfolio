@@ -8,13 +8,23 @@ import Skills from './Pages/Skills'
 import Projects from './Pages/Projects'
 import Contact from './Pages/Contact'
 import ProjectDetails from './Pages/ProjectDetails'
+import Footer from './Components/Footer'
 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+ const [darkMode, setDarkMode] = useState(() => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme) {
+    return savedTheme === "dark";
+  }
+
+  return true;
+});
 
 useEffect(() => {
   document.documentElement.classList.toggle("dark", darkMode);
+  localStorage.setItem("theme", darkMode ? "dark" : "light");
 }, [darkMode]);
   
 
@@ -32,14 +42,23 @@ useEffect(() => {
       setDarkMode={setDarkMode}
     />
 
-    <Routes>
-      <Route path="/" element={<Home darkMode={darkMode} />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/skills" element={<Skills />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/project/:id" element={<ProjectDetails />} />
-      <Route path="/Contact" element={<Contact />} />
-    </Routes>
+<Routes>
+  <Route
+    path="/"
+    element={
+      <>
+        <Home darkMode={darkMode} />
+        <About darkMode={darkMode} />
+        <Skills  darkMode={darkMode}/>
+        <Projects  darkMode={darkMode} />
+        <Contact darkMode={darkMode} />
+        <Footer darkMode={darkMode} />
+      </>
+    }
+  />
+
+  <Route path="/project/:id" element={<ProjectDetails />} />
+</Routes>
   </div>
 </Router>
           )
