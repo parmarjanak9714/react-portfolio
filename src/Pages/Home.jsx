@@ -88,19 +88,29 @@ export default function Home({ darkMode }) {
             </p>
 
             <div className="flex gap-4">
-              <Link
-                to="/projects"
+              <button
+                onClick={() =>
+                  document.getElementById("projects")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
                 className="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg hover:bg-cyan-600 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-cyan-500/20"
               >
                 View My Work
-              </Link>
+              </button>
 
-              <Link
-                to="/contact"
-                className="px-6 py-3 border border-cyan-500 text-cyan-500 font-semibold rounded-lg hover:bg-cyan-500 hover:text-white hover:scale-105 transition-all duration-300"
+              <button
+                onClick={() =>
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
+                className="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg hover:bg-cyan-600 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-cyan-500/20"
               >
                 Contact Me
-              </Link>
+              </button>
             </div>
           </div>
           <div className="relative mt-10 lg:mt-0 lg:mr-12 flex items-center justify-center">

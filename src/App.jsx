@@ -26,12 +26,21 @@ useEffect(() => {
   document.documentElement.classList.toggle("dark", darkMode);
   localStorage.setItem("theme", darkMode ? "dark" : "light");
 }, [darkMode]);
+
+useEffect(() => {
+  const navigation = performance.getEntriesByType("navigation")[0];
+
+  if (navigation?.type === "reload" && window.location.pathname !== "/") {
+    window.history.replaceState(null, "", "/");
+    window.location.reload();
+  }
+}, []);
   
 
   return (
   <Router>
   <div
-    className="min-h-screen transition-colors duration-300"
+    className="min-h-screen transition-colors duration-300 "
     style={{
       backgroundColor: "var(--bg-primary)",
       color: "var(--text-primary)",

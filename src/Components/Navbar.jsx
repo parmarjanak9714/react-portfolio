@@ -29,17 +29,21 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
   const closeMenu = () => setMenuOpen(false);
   const scrollToSection = (id) => {
+  closeMenu();
+
+  setTimeout(() => {
     const section = document.getElementById(id);
 
     if (section) {
-      section.scrollIntoView({
+      const y = section.getBoundingClientRect().top + window.scrollY - 80;
+
+      window.scrollTo({
+        top: y,
         behavior: "smooth",
-        block: "start",
       });
     }
-
-    closeMenu();
-  };
+  }, 300);
+};
 
   return (
     <motion.nav
@@ -238,19 +242,12 @@ export default function Navbar({ darkMode, setDarkMode }) {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: index * 0.05 }}
                     >
-                      <NavLink
-                        to={item.path}
-                        onClick={closeMenu}
-                        className={({ isActive }) =>
-                          `block px-4 py-3 rounded-lg font-medium transition-all ${
-                            isActive
-                              ? "bg-cyan-400/10 text-cyan-400 border border-cyan-400/10"
-                              : "text-gray-300 hover:text-white hover:bg-white/5"
-                          }`
-                        }
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className="w-full text-left px-4 py-3 rounded-lg font-medium transition-all text-gray-300 hover:text-white hover:bg-white/5"
                       >
                         {item.name}
-                      </NavLink>
+                      </button>
                     </motion.div>
                   ))}
 
