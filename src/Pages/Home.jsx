@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
+import WelcomeRobot from "../Components/WelcomeRobot";
 
 export default function Home({ darkMode }) {
   return (

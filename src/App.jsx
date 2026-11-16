@@ -9,6 +9,7 @@ import Projects from './Pages/Projects'
 import Contact from './Pages/Contact'
 import ProjectDetails from './Pages/ProjectDetails'
 import Footer from './Components/Footer'
+import WelcomePopup from "./Components/WelcomePopup";
 
 
 function App() {
@@ -46,6 +47,7 @@ useEffect(() => {
       color: "var(--text-primary)",
     }}
   >
+    <WelcomePopup />
     <Navbar
       darkMode={darkMode}
       setDarkMode={setDarkMode}
